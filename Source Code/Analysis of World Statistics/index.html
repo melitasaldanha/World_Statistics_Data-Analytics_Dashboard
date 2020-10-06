@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>World Statistics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/left_menu.css">
+  <link rel="stylesheet" href="css/slider.css">
+  <link rel="stylesheet" href="css/map.css">
+  <link rel="stylesheet" href="css/parallel_coordinates.css">
+  <link rel="stylesheet" href="css/region_graph.css">
+  <link rel="stylesheet" href="css/year_graph.css">
+  <link rel="stylesheet" href="css/radar_chart.css">
+  <link rel="stylesheet" href="jquery-nice-select-1.1.0\css\nice-select.css">
+</head>
+<body>
+
+  <div id="title" style="text-align:center"> WORLD STATISTICS </div>
+
+  <div id="visualization">
+
+    <div id="left_menu">
+
+      <!-- <h4> Apply Filters: </h4> -->
+
+      <!-- <div id="radio_button">
+        <input type="radio" id="overall" name="age" value="overall_comparison" onclick="displayOverall()" checked>
+        <label for="age1">Overall Comparison</label><br>
+        <input type="radio" id="individual" name="age" value="feature_comparison" onclick="displayIndividual()">
+        <label for="age2">Feature Comparison</label>
+      </div> -->
+
+      <div id="overall_comparison">
+        <div id="gender">
+          <ul>
+            <li><label><input id="gen" type="checkbox" onclick="enablegendercheck(this)"/>Gender</label>
+              <ul class="gender">
+                <li class="child" ><label><input type="checkbox" id="Male" onclick="checkgender(this)"/> Male</label></li>
+                <li class="child" ><label><input type="checkbox" id="Female" onclick="checkgender(this)"/> Female</label></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div id="Population Density">
+        <input type="checkbox" id="feature1" name="feature1" onclick="enableslider(this)"/>
+        <label for="feature1">Population Density</label>
+        <div slider id="slider-distance">
+          <div>
+            <div inverse-left style="width:70%;"></div>
+            <div inverse-right style="width:70%;"></div>
+            <div range id="line" style="left:0%;right:0%;"></div>
+            <span thumb id="t1" style="left:0%;"></span>
+            <span thumb id="t2" style="left:100%;"></span>
+            <div sign style="left:0%;">
+              <span id="value">0</span>
+            </div>
+            <div sign style="left:95%;">
+              <span id="value">25000</span>
+            </div>
+          </div>
+          <input type="range" id="leftthumb" tabindex="0" value="0" max="25000" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+          <input type="range" id="rightthumb" tabindex="0" value="25000" max="25000" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)" />
+          </div>
+        </div>
+
+
+          <div id="Health Expenditure Govt">
+          <input type="checkbox" id="feature2" name="feature2" onclick="enableslider(this)"/>
+          <label for="feature2">Health Expenditure Gvt</label>
+        <div slider id="slider-distance">
+          <div>
+            <div inverse-left style="width:70%;"></div>
+            <div inverse-right style="width:70%;"></div>
+            <div range id="line" style="left:0%;right:0%;"></div>
+            <span thumb id="t1" style="left:0%;"></span>
+            <span thumb id="t2" style="left:100%;"></span>
+            <div sign style="left:0%;">
+              <span id="value">0</span>
+            </div>
+            <div sign style="left:100%;">
+              <span id="value">100</span>
+            </div>
+          </div>
+          <input type="range" id="leftthumb" tabindex="0" value="0" max="100" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+          <input type="range" id="rightthumb" tabindex="0" value="100" max="100" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+          </div>
+        </div>
+
+        <div id="Health Expenditure Pvt">
+          <input type="checkbox" id="feature3" name="feature3" onclick="enableslider(this)"/>
+          <label for="feature3">Health Expenditure Pvt</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">100</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="100" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="100" max="100" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+          <div id="Health Expenditure Indv">
+            <input type="checkbox" id="feature4" name="feature4" onclick="enableslider(this)"/>
+            <label for="feature4">Health Expenditure Ind</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">100</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="100" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="100" max="100" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Life Expectancy">
+            <input type="checkbox" id="feature5" name="feature5" onclick="enableslider(this)" />
+            <label for="feature5">Life Expectancy</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">100</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="100" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="100" max="100" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Education Expenditure">
+            <input type="checkbox" id="feature6" name="feature6" onclick="enableslider(this)"/>
+            <label for="feature6">Education Expenditure</label>
+            <div slider id="slider-distance">
+              <div>
+                <div inverse-left style="width:70%;"></div>
+                <div inverse-right style="width:70%;"></div>
+                <div range id="line" style="left:0%;right:0%;"></div>
+                <span thumb id="t1" style="left:0%;"></span>
+                <span thumb id="t2" style="left:100%;"></span>
+                <div sign style="left:0%;">
+                  <span id="value">0</span>
+                </div>
+                <div sign style="left:100%;">
+                  <span id="value">25</span>
+                </div>
+              </div>
+              <input type="range" id="leftthumb" tabindex="0" value="0" max="25" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+              <input type="range" id="rightthumb" tabindex="0" value="25" max="25" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+              </div>
+            </div>
+
+
+            <div id="Mean years in school">
+              <input type="checkbox" id="feature7" name="feature7" onclick="enableslider(this)"/>
+              <label for="feature7">Years in School(Mean)</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">20</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="20" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="20" max="20" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Average Income">
+            <input type="checkbox" id="feature8" name="feature8" onclick="enableslider(this)"/>
+            <label for="feature8">Average Income</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">100</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">4000</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="100" max="4000" min="100" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="100" max="4000" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Employment Rate">
+            <input type="checkbox" id="feature9" name="feature9">
+            <label for="feature9">Employment Rate</label>
+            <div slider id="slider-distance">
+              <div>
+                <div inverse-left style="width:70%;"></div>
+                <div inverse-right style="width:70%;"></div>
+                <div range id="line" style="left:0%;right:0%;"></div>
+                <span thumb id="t1" style="left:0%;"></span>
+                <span thumb id="t2" style="left:100%;"></span>
+                <div sign style="left:0%;">
+                  <span id="value">0</span>
+                </div>
+                <div sign style="left:100%;">
+                  <span id="value">100</span>
+                </div>
+              </div>
+              <input type="range" id="leftthumb" tabindex="0" value="0" max="100" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+              <input type="range" id="rightthumb" tabindex="0" value="100" max="100" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+              </div>
+            </div>
+
+
+            <div id="Income Inequality">
+              <input type="checkbox" id="feature10" name="feature10" onclick="enableslider(this)"/>
+              <label for="feature10">Income Inequality</label>
+            <div slider id="slider-distance">
+              <div>
+                <div inverse-left style="width:70%;"></div>
+                <div inverse-right style="width:70%;"></div>
+                <div range id="line" style="left:0%;right:0%;"></div>
+                <span thumb id="t1" style="left:0%;"></span>
+                <span thumb id="t2" style="left:100%;"></span>
+                <div sign style="left:0%;">
+                  <span id="value">0</span>
+                </div>
+                <div sign style="left:100%;">
+                  <span id="value">100</span>
+                </div>
+              </div>
+              <input type="range" id="leftthumb" tabindex="0" value="0" max="100" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+              <input type="range" id="rightthumb" tabindex="0" value="100" max="100" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+              </div>
+            </div>
+
+
+            <div id="Child Mortality Rate">
+              <input type="checkbox" id="feature11" name="feature11" onclick="enableslider(this)"/>
+              <label for="feature11">Child Mortality Rate</label>
+            <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">600</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="600" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="600" max="600" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Adult Mortality Rate">
+            <input type="checkbox" id="feature12" name="feature12" onclick="enableslider(this)"/>
+            <label for="feature12">Adult Mortality Rate</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:100%;">
+                <span id="value">1000</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="1000" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="1000" max="1000" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Suicides">
+            <input type="checkbox" id="feature13" name="feature13" onclick="enableslider(this)"/>
+            <label for="feature13">Suicides</label>
+          <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range id="line" style="left:0%;right:0%;"></div>
+              <span thumb id="t1" style="left:0%;"></span>
+              <span thumb id="t2" style="left:100%;"></span>
+              <div sign style="left:0%;">
+                <span id="value">0</span>
+              </div>
+              <div sign style="left:90%;">
+                <span id="value">220000</span>
+              </div>
+            </div>
+            <input type="range" id="leftthumb" tabindex="0" value="0" max="220000" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+            <input type="range" id="rightthumb" tabindex="0" value="220000" max="220000" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+            </div>
+          </div>
+
+
+          <div id="Murders">
+            <input type="checkbox" id="feature14" name="feature14" onclick="enableslider(this)"/>
+            <label for="feature14">Murders</label>
+            <div slider id="slider-distance">
+              <div>
+                <div inverse-left style="width:70%;"></div>
+                <div inverse-right style="width:70%;"></div>
+                <div range id="line" style="left:0%;right:0%;"></div>
+                <span thumb id="t1" style="left:0%;"></span>
+                <span thumb id="t2" style="left:100%;"></span>
+                <div sign style="left:0%;">
+                  <span id="value">0</span>
+                </div>
+                <div sign style="left:100%;">
+                  <span id="value">6000</span>
+                </div>
+              </div>
+              <input type="range" id="leftthumb" tabindex="0" value="0" max="6000" min="0" step="1" oninput="func1(this)" onmouseout="call_updateconstraint(this)"/>
+              <input type="range" id="rightthumb" tabindex="0" value="6000" max="6000" min="0" step="1" oninput="func2(this)" onmouseout="call_updateconstraint(this)"/>
+              </div>
+            </div>
+
+      </div>
+
+
+      <!-- <div id="feature_comparison">
+
+        <div id="feature_select">
+          <br>
+          <select id="cars">
+            <option value="volvo">Select Feature</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select><br><br>
+          <select id="cars">
+            <option value="volvo">Select Year</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select>
+          <br>
+        </div>
+
+        <div id="individual_feature_vis">individual_feature_vis</div>
+
+        <div id="individual_feature_trend">individual_feature_trend</div>
+
+      </div> -->
+
+    </div>
+
+    <div id="top_visualization">
+
+      <div id="map_div">
+        <div id="map_chart"></div>
+      </div>
+
+      <div id="year_graph_div">
+        <span>Year</span>
+        <div id="lollipop_chart"></div>
+      </div>
+
+      <div id="radar_chart_div">
+        <div id="radar_chart_options">
+
+          <!-- <h3> PCA Intrinsic Dimensions </h3> -->
+          <!-- <span> Select Year </span> -->
+          <!-- <br> -->
+
+          <div id="radar_dropdown" style="color:black;">
+
+            <select id="radar_select" onchange="drawRadarChart(this.value)">
+              <!-- <option data-display="Choose Year">Select</option> -->
+              <option value="2000" selected>2000</option>
+              <option value="2001">2001</option>
+              <option value="2002">2002</option>
+              <option value="2003">2003</option>
+              <option value="2004">2004</option>
+              <option value="2005">2005</option>
+              <option value="2006">2006</option>
+              <option value="2007">2007</option>
+              <option value="2008">2008</option>
+              <option value="2009">2009</option>
+              <option value="2010">2010</option>
+            </select><br>
+
+          </div>
+
+          <img src="css/c.JPG" />
+
+        </div>
+
+        <div id="radar_chart"></div>
+
+      </div>
+
+    </div>
+
+    <div id="bottom_visualization">
+
+      <div id="parallel_coordinates_div">
+        <div id="parallel_coordinates_header">
+
+          <span> Visualize Filtered Countries </span>
+          <button id="hide-ticks">Hide Ticks</button>
+          <button id="show-ticks" disabled="disabled">Show Ticks</button>
+          <button title="Zoom in on selected data" id="scale_selection" disabled="disabled">Scale Selections</button>
+          <button title="Exclude selected data" id="exclude_data" disabled="disabled">Remove selected data</button>
+          <!-- <button title="Go to original data" id="original_data" disabled="disabled">Go to original data</button> -->
+          <button title="Export data as CSV" id="export-data">Export Data</button>
+
+        </div>
+
+        <div id="parallel_coordinates_chart">
+          <canvas id="background_pc"></canvas>
+          <canvas id="foreground_pc"></canvas>
+          <canvas id="highlight_pc"></canvas>
+          <svg></svg>
+        </div>
+
+      </div>
+
+      <div id="region_graph_div">
+        <h3>Regions</h3>
+        <p id="region_legend"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- d3 v3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+  <!-- Index -->
+  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+  <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+  <script type="text/javascript" src="js/index.js"></script>
+
+  <!-- Left Menu -->
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="js/feature_slider.js"></script>
+
+
+  <!-- Map -->
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script type="text/javascript" src="js/map.js"></script>
+
+  <!-- Parallel Co-ordinates -->
+  <script src="http://underscorejs.org/underscore.js"></script>
+  <script type="text/javascript" src="js/parallel_coordinates.js"></script>
+
+
+  <!-- Year - Lollipop Graph -->
+  <script type="text/javascript" src="js/year_graph.js"></script>
+
+  <!-- Radar chart -->
+  <script src="jquery-nice-select-1.1.0\js\jquery.js"></script>
+  <script src="jquery-nice-select-1.1.0\js\jquery.nice-select.js"></script>
+  <script type="text/javascript" src="js/radar_chart.js"></script>
+
+  <!-- Region - Bar Graph -->
+
+
+  <!-- Data -->
+  <script type="text/javascript" src="js/filter_data.js"></script>
+
+</body>
+</html>

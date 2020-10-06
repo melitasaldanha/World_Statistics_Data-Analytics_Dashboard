@@ -1,0 +1,49 @@
+#region_graph_div {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 29%;
+  float: left;
+  color: white;
+  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 1.4em;
+  margin-left: 1%;
+}
+
+/* #region_graph_div h3 {
+  margin-bottom: 3%;
+} */
+
+#region_legend {
+  text-align: left;
+  overflow-y: auto;
+  border-left: 1px solid #777;
+}
+
+#region_legend:hover {
+  text-align: left;
+  overflow-y: auto;
+  border-left: 1px solid #777;
+}
+
+#region_graph_div .row {
+  cursor: pointer;
+  margin: 0.5% 0%;
+}
+
+#region_graph_div .row:hover {
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+#region_graph_div .off {
+  color: #555;
+}
+
+#region_graph_div.color-block, .color-bar {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  margin: 1px 4px 1px 0px;
+}

@@ -1,0 +1,150 @@
+#parallel_coordinates_div {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 68%;
+  color: #e3e3e3;
+  float: left;
+  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-right: 2%;
+}
+
+#parallel_coordinates_div a {
+  text-decoration: none;
+  color: #5ae;
+}
+
+/* #parallel_coordinates_div svg {
+  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
+} */
+
+#parallel_coordinates_chart canvas, svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#parallel_coordinates_chart {
+  width: 100%;
+  height: 98%;
+  position: relative;
+}
+
+#parallel_coordinates_chart .brush rect.extent {
+  fill: rgba(100,100,100,0.15);
+  stroke: #ddd;
+}
+
+#parallel_coordinates_chart .brush:hover rect.extent {
+  stroke: #222;
+  stroke-dasharray: 5,5;
+}
+
+#parallel_coordinates_chart .brush rect.extent:hover {
+  stroke-dasharray: none;
+}
+
+#parallel_coordinates_chart .resize rect {
+  fill: none;
+}
+
+#parallel_coordinates_chart .background {
+  fill: none;
+}
+
+#parallel_coordinates_chart .axis_pc line, #parallel_coordinates_chart .axis_pc path {
+  fill: none;
+  stroke: #777;
+  stroke-width: 1;
+}
+
+#parallel_coordinates_chart .axis_pc line,  #parallel_coordinates_chart .axis_pc path {
+  stroke: #777;
+}
+
+#parallel_coordinates_chart .axis_pc .tick {
+  width: 200px;
+}
+
+#parallel_coordinates_chart .axis_pc text {
+  text-anchor: right;
+  font-size: 11px;
+  fill: #f2f2f2;
+  text-shadow: 0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000;
+}
+
+#parallel_coordinates_chart .axis_pc text.label {
+  font-size: 12px;
+  cursor: move;
+  padding-bottom: 24px;
+  fill: #ddd;
+}
+
+/* #parallel_coordinates_div button[disabled=disabled] {
+
+  opacity: 0.4;
+} */
+
+#parallel_coordinates_header span {
+  font-size: 18px;
+}
+
+#parallel_coordinates_header button[disabled=disabled] {
+  color: #555 !important;
+  display: none;
+  opacity: 0.2;
+}
+
+/* #parallel_coordinates_div button[disabled=disabled] {
+
+} */
+
+#parallel_coordinates_header button {
+  font-weight:bold;
+  margin: 0% 0.5%;
+  /* font-size: 15px; */
+}
+
+button#show-ticks:hover,
+button#scale_selection:hover,
+button#original_data:hover,
+button#export-data:hover {
+  color: #080;
+}
+
+button#hide-ticks:hover, button#exclude_data:hover {
+  color: #900;
+}
+
+#parallel_coordinates_header {
+  width: 100%;
+  height: 3%;
+  /* border-bottom: 1px solid rgba(100,100,100,0.35); */
+  background: #040404;
+  color: #f3f3f3;
+  padding-top: 0.3%;
+  margin-left: 0.5%;
+  /* padding: 6px 24px 4px; */
+  /* line-height: 24px; */
+}
+
+#parallel_coordinates_header button {
+  vertical-align: top;
+}
+
+/* Scrollbars */
+
+#parallel_coordinates_chart::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#parallel_coordinates_chart::-webkit-scrollbar-track {
+  background: #222;
+}
+
+#parallel_coordinates_chart::-webkit-scrollbar-thumb {
+  background: #444;
+}
